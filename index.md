@@ -1,3 +1,5 @@
+layout: page
+title: "Flag5"
 # Flag5
 ## Nicolas Kowenski
 
