@@ -1,0 +1,7 @@
+site_name: ClusterSecret
+theme:
+  name: material
+repo_url: https://github.com/zakkg3/ClusterSecret
+markdown_extensions:
+  - attr_list
+  - md_in_html
