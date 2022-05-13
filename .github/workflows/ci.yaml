@@ -14,3 +14,8 @@ jobs:
           python-version: 3.x
       - run: pip install mkdocs-material 
       - run: mkdocs gh-deploy --force
+            CUSTOM_DOMAIN: flag5.com
+            CONFIG_FILE: clustersecret/mkdocs.yml
+            # EXTRA_PACKAGES: build-base
+            # GITHUB_DOMAIN: https://github.com/zakkg3/zakkg3.github.io/
+            # REQUIREMENTS: folder/requirements.txt
