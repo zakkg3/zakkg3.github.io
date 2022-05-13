@@ -1,3 +1,9 @@
 theme: jekyll-theme-cayman
 title: Flag5
 description: Nicolas Kowenski personal briefcase.
+contact_links:
+  - name: Email
+    url: "mailto:nico@flag5.com"
+    icon: fa-solid fa-envelope
+  - name: LinkedIn
+    url: https://www.linkedin.com/in/nicokowenski/
