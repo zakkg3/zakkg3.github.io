@@ -7,5 +7,5 @@ contact_links:
     icon: fa-solid fa-envelope
   - name: LinkedIn
     url: https://www.linkedin.com/in/nicokowenski/
-exclude:
-  clustersecret
+# exclude:
+#   clustersecret
