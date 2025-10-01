@@ -46,9 +46,7 @@
 font-family: 'Heebo', sans-serif;
 */
 
-@import url('font-awesome.css');
-@import url('themify-icons.css');
-@import url('linear-icons.css');
+/* Font icon imports removed - now using CDN versions in HTML */
 @import url('animate.css');
 @import url('owl.css');
 @import url('jquery.fancybox.css');
@@ -1305,7 +1303,7 @@ img{
 
 .features-section{
 	position:relative;
-	background:#f4f9fe;
+	background:#e8edef;
 	padding:130px 0px 150px;
 }
 
@@ -1360,21 +1358,12 @@ img{
 
 .features-section .carousel-column .inner{
 	position:relative;
-	padding-left:70px;	
+	padding-left:70px;
 }
 
-.features-section .carousel-column .inner:before{
-	content:'';
-	position:absolute;
-	right:-130px;
-	top:-110px;
-	width:290px;
-	height:290px;
-	background:url(../images/background/bg-shape-two.png) center center no-repeat;	
-}
-
+.features-section .carousel-column .inner:before,
 .features-section.alternate .carousel-column .inner:before{
-	background:url(../images/background/bg-shape-three.png) center center no-repeat;	
+	display:none;
 }
 
 .image-carousel-one{
