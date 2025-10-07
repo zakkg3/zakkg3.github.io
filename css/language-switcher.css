@@ -1,0 +1,102 @@
+/* Language Switcher Styles - Dropdown */
+.lang-switcher {
+    display: inline-block;
+    margin-left: 20px;
+    position: relative;
+    vertical-align: middle;
+    margin-top: -3px;
+}
+
+.lang-switcher-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.lang-switcher-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.lang-switcher-toggle::after {
+    content: '▼';
+    font-size: 10px;
+    margin-left: 2px;
+    opacity: 0.8;
+    color: white;
+}
+
+.lang-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    padding: 5px;
+    display: none;
+    min-width: 140px;
+}
+
+.lang-switcher.open .lang-dropdown {
+    display: block;
+}
+
+.lang-dropdown button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: left;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.lang-dropdown button:hover {
+    background: rgba(220, 53, 69, 0.1);
+}
+
+.lang-dropdown button.active {
+    background: rgba(220, 53, 69, 0.15);
+    font-weight: 500;
+}
+
+.lang-dropdown button .flag {
+    font-size: 20px;
+}
+
+.lang-dropdown button .lang-name {
+    font-size: 14px;
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 1023px) {
+    .lang-switcher {
+        display: block;
+        margin: 10px 15px 0;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .lang-switcher {
+        margin: 10px;
+        text-align: center;
+    }
+
+    .lang-switcher-toggle {
+        padding: 5px 10px;
+        font-size: 18px;
+    }
+}
