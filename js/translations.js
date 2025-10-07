@@ -202,39 +202,59 @@ class LanguageManager {
             }
         });
 
-        // Update the toggle button flag
-        const currentFlag = document.querySelector('.current-flag');
-        if (currentFlag) {
-            currentFlag.textContent = this.currentLang === 'de' ? '🇩🇪' : '🇬🇧';
-        }
+        // Update all toggle button flags (desktop and mobile)
+        document.querySelectorAll('.current-flag').forEach(flag => {
+            flag.textContent = this.currentLang === 'de' ? '🇩🇪' : '🇬🇧';
+        });
     }
 }
 
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
     const langManager = new LanguageManager();
-    const langSwitcher = document.querySelector('.lang-switcher');
-    const langToggle = document.querySelector('.lang-switcher-toggle');
+    const langSwitchers = document.querySelectorAll('.lang-switcher');
 
-    // Toggle dropdown on click
-    langToggle.addEventListener('click', function(e) {
-        e.stopPropagation();
-        langSwitcher.classList.toggle('open');
-    });
+    if (!langSwitchers.length) return;
 
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!langSwitcher.contains(e.target)) {
-            langSwitcher.classList.remove('open');
-        }
-    });
+    // Setup each language switcher (desktop and mobile)
+    langSwitchers.forEach(function(langSwitcher) {
+        const langToggle = langSwitcher.querySelector('.lang-switcher-toggle');
 
-    // Add click handlers to language switcher buttons
-    document.querySelectorAll('.lang-dropdown button').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const lang = this.getAttribute('data-lang');
-            langManager.switchLanguage(lang);
-            langSwitcher.classList.remove('open');
+        if (!langToggle) return;
+
+        // Toggle dropdown on click
+        langToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            // Close all other switchers
+            langSwitchers.forEach(s => {
+                if (s !== langSwitcher) {
+                    s.classList.remove('open');
+                }
+            });
+            langSwitcher.classList.toggle('open');
         });
+
+        // Add click handlers to language buttons within this switcher
+        langSwitcher.querySelectorAll('.lang-dropdown button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                langManager.switchLanguage(lang);
+                // Close all switchers
+                langSwitchers.forEach(s => s.classList.remove('open'));
+            });
+        });
+    });
+
+    // Close all dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+        let clickedInside = false;
+        langSwitchers.forEach(switcher => {
+            if (switcher.contains(e.target)) {
+                clickedInside = true;
+            }
+        });
+        if (!clickedInside) {
+            langSwitchers.forEach(s => s.classList.remove('open'));
+        }
     });
 });

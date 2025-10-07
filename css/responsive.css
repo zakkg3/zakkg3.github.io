@@ -38,7 +38,7 @@
 	}
 	
 	.main-header .nav-outer .other-links{
-		display:none;	
+		display:none;
 	}
 	
 	.main-menu .navigation > li{
@@ -352,7 +352,7 @@
 	}
 	
 	.main-menu .collapse {
-	   max-height:300px;
+	   max-height:500px;
 		overflow:auto;
 		float:none;
 		width:100%;

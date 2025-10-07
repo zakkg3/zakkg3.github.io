@@ -43,6 +43,7 @@
     padding: 5px;
     display: none;
     min-width: 140px;
+    z-index: 999;
 }
 
 .lang-switcher.open .lang-dropdown {
@@ -62,6 +63,7 @@
     text-align: left;
     border-radius: 6px;
     transition: all 0.2s ease;
+    color: #333;
 }
 
 .lang-dropdown button:hover {
@@ -79,24 +81,121 @@
 
 .lang-dropdown button .lang-name {
     font-size: 14px;
+    color: #333;
 }
 
-/* Responsive adjustments */
-@media only screen and (max-width: 1023px) {
-    .lang-switcher {
+/* Hide mobile version by default */
+.mobile-lang-item {
+    display: none !important;
+}
+
+/* Desktop specific styles - always apply unless mobile */
+.nav-outer > .lang-switcher .lang-switcher-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+.nav-outer > .lang-switcher .lang-switcher-toggle::after {
+    color: white;
+}
+
+.nav-outer > .lang-switcher .lang-dropdown {
+    background: rgba(255, 255, 255, 0.98);
+}
+
+.nav-outer > .lang-switcher .lang-dropdown button {
+    color: #333 !important;
+}
+
+.nav-outer > .lang-switcher .lang-dropdown button .lang-name {
+    color: #333 !important;
+}
+
+/* Mobile Responsive */
+@media only screen and (max-width: 1140px) {
+    /* Hide desktop version completely */
+    .nav-outer > .lang-switcher:not(.lang-switcher-mobile),
+    .nav-outer .lang-switcher:not(.lang-switcher-mobile),
+    .other-links + .lang-switcher {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+
+    /* Show mobile version in menu - but only when collapsed menu is open */
+    .navbar-collapse.in .mobile-lang-item,
+    .navbar-collapse.show .mobile-lang-item {
+        display: block !important;
+        margin: 0 !important;
+        padding: 10px !important;
+        background: #3b566e !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .mobile-lang-item a {
+        padding: 0 !important;
+    }
+
+    .lang-switcher-mobile {
         display: block;
-        margin: 10px 15px 0;
+        margin: 0;
+        padding: 0;
+        position: relative;
+    }
+
+    .lang-switcher-mobile .lang-switcher-toggle {
+        background: transparent;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        padding: 8px 15px;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .lang-switcher-mobile .lang-switcher-toggle:hover {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .lang-switcher-mobile .lang-switcher-toggle::after {
+        color: #fff;
+    }
+
+    .lang-switcher-mobile .lang-dropdown {
+        position: static;
+        box-shadow: none;
+        background: rgba(0, 0, 0, 0.15);
+        margin-top: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        width: 100%;
+    }
+
+    .lang-switcher-mobile .lang-dropdown button {
+        color: #fff !important;
+    }
+
+    .lang-switcher-mobile .lang-dropdown button .lang-name {
+        color: #fff !important;
+    }
+
+    .lang-switcher-mobile .lang-dropdown button:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .lang-switcher-mobile .lang-dropdown button.active {
+        background: rgba(220, 53, 69, 0.3);
     }
 }
 
 @media only screen and (max-width: 767px) {
-    .lang-switcher {
-        margin: 10px;
-        text-align: center;
+    .navbar-collapse.in .mobile-lang-item,
+    .navbar-collapse.show .mobile-lang-item {
+        padding: 10px !important;
     }
 
-    .lang-switcher-toggle {
-        padding: 5px 10px;
+    .lang-switcher-mobile .lang-switcher-toggle {
+        padding: 6px 12px;
         font-size: 18px;
     }
 }
